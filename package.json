@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "main": "src/index.js",
   "scripts": {
-    "start": "node ./src/index.js"
+    "start": "node ./src/index.js",
+    "test": "mocha"
   },
   "author": "Isaac Helbling",
   "license": "MIT",
@@ -11,5 +12,9 @@
     "lodash": "^4.17.4",
     "redux": "^3.6.0",
     "uuid": "^3.0.1"
+  },
+  "devDependencies": {
+    "chai": "^4.0.2",
+    "mocha": "^3.4.2"
   }
 }
