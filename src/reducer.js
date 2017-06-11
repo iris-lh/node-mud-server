@@ -6,9 +6,7 @@ module.exports = (state = {
 
     case 'ADD_SESSION':
       var newSessions = Object.assign({}, state.sessions)
-      newSessions[action.payload.id] = {
-        inputGetter: 'getUsername'
-      }
+      newSessions[action.payload.id] = action.payload
       return Object.assign({}, state, {
         sessions: newSessions
       });

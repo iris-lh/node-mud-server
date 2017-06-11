@@ -1,21 +1,30 @@
 const _ = require('lodash')
+const uuid = require('uuid/v4')
 
-class Session {
-	constructor() {
-    this.state = 'NEEDS_USERNAME'
-    this.transitions = {
+const Session = {
+  create: (socket)=> {
+    return {
+      socket: socket,
+      id: uuid(),
+      state: 'NEW'
+    }
+  },
+
+  transition: (session, transition)=> {
+    const transitions = {
+      'NEW': {'GREET': 'NEEDS_USERNAME'},
       'NEEDS_USERNAME': {'ADD_USERNAME': 'NEEDS_PASSWORD'},
       'NEEDS_PASSWORD': {'ADD_PASSWORD': 'AT_PLAY'},
       'AT_PLAY': {}
     }
-	}
-
-  transition(transition) {
-    this.state = _.get(
-      this.transitions, 
-      `${this.state}.${transition}`, 
-      this.state
-    )
+    return Object.assign({}, session, {
+      state: _.get(
+        transitions, 
+        `${session.state}.${transition}`, 
+        session.state
+      ),
+      rendered: false
+    })
   }
 }
 
