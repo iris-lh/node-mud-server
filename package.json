@@ -9,6 +9,7 @@
   "author": "Isaac Helbling",
   "license": "MIT",
   "dependencies": {
+    "immutable": "^3.8.1",
     "lodash": "^4.17.4",
     "redux": "^3.6.0",
     "uuid": "^3.0.1"
