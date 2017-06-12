@@ -22,4 +22,4 @@ server.listen(config.port);
 
 setInterval(()=>{
   gameTick(store)
-}, 1000)
+}, config.tickLength)
