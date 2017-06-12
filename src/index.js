@@ -1,11 +1,11 @@
-const net      = require('net');
-const redux    = require('redux')
-const uuid     = require('uuid/v4')
-const config   = require('./config.json')
-const Inputs   = require('./Inputs.js')
-const Session  = require('./session.js')
-const reducer  = require('./reducer.js')
-const gameTick = require('./game-tick.js')
+const net         = require('net');
+const redux       = require('redux')
+const uuid        = require('uuid/v4')
+const config      = require('./config.json')
+const Session     = require('./session')
+const reducer     = require('./reducers/index')
+const handleInput = require('./handle-input')
+const gameTick    = require('./game-tick')
 
 const store = redux.createStore(reducer)
 

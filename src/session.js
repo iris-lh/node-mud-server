@@ -1,12 +1,14 @@
 const _ = require('lodash')
 const uuid = require('uuid/v4')
+const Immutable = require('immutable')
 
 const Session = {
   create: (socket)=> {
     return {
       socket: socket,
       id: uuid(),
-      state: 'NEW'
+      state: 'NEW',
+      rendered: false
     }
   },
 
@@ -17,14 +19,19 @@ const Session = {
       'NEEDS_PASSWORD': {'ADD_PASSWORD': 'AT_PLAY'},
       'AT_PLAY': {}
     }
-    return Object.assign({}, session, {
-      state: _.get(
-        transitions, 
-        `${session.state}.${transition}`, 
-        session.state
-      ),
+
+    const newState = _.get(
+      transitions, 
+      `${session.state}.${transition}`, 
+      session.state
+    )
+
+    console.log(session)
+
+    return Immutable.Map(session).merge({
+      state: newState,
       rendered: false
-    })
+    }).toJS
   }
 }
 
