@@ -1,6 +1,6 @@
 const _ = require('lodash')
 
-const CommandParser = require('./CommandParser')
+const CommandParser = require('./command-parser')
 const config = require('./config.json')
 
 class Inputs {
