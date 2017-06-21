@@ -1,7 +1,7 @@
 const expect = require('chai').expect
 const handleInput = require('../src/handle-input')
 
-describe.only('handleInput', ()=>{
+xdescribe('handleInput', ()=>{
 	it('foo', ()=>{
 
 	})

@@ -1,17 +1,18 @@
 const _ = require('lodash')
-const render = require('./render')
+const view = require('./view')
 
 function gameTick(store) {
 	const state = store.getState()
 
   _.forEach(state.sessions, session => {
-    console.log(session.id)
 
-    if (session.state === 'NEW') {
+    if (session.context === 'NEW') {
+      view.addLine(view.sessionView(session), session, store)
+      view.addLine('USERNAME: ', session, store)
       store.dispatch({type: 'GREET', payload: session.id})
     }
 
-    render(session, store)
+    view.render(session, store)
   })
 }
 

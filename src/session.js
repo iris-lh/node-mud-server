@@ -7,8 +7,9 @@ const Session = {
     return {
       socket: socket,
       id: uuid(),
-      state: 'NEW',
-      rendered: false
+      context: 'NEW',
+      rendered: false,
+      lines: []
     }
   },
 
@@ -22,16 +23,14 @@ const Session = {
 
     const newState = _.get(
       transitions, 
-      `${session.state}.${transition}`, 
-      session.state
+      `${session.context}.${transition}`, 
+      session.context
     )
 
-    console.log(session)
-
     return Immutable.Map(session).merge({
-      state: newState,
+      context: newState,
       rendered: false
-    }).toJS
+    })
   }
 }
 
