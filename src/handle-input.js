@@ -1,4 +1,4 @@
-const parseCommand = require('./command-parser')
+const parseCommand = require('./parse-command')
 const view = require('./view')
 const config = require('./config.json')
 
